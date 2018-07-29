@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Games, do Curso de Criação de Games - Semeie.tech</title>
+    <script src="../../lib/brickengine.js"></script>
+    <script src="../../lib/handlecontent.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="screen"></main>
+</body>
+<script id="gamelogic"></script>
+<script>
+    writeSection('screen', 'screen.html').then(
+        document.getElementById('gamelogic').setAttribute('src', 'game.js')
+    )
+</script>
+
+</html>

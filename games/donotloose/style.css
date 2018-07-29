@@ -1,0 +1,76 @@
+.palco, .next {
+  border:3px solid black;
+  display:inline-block;
+}
+.pixel {
+  background-color: black;
+  display: inline-block;
+  padding: 3px
+}
+
+.pixel::before{
+  content:'';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border: 2px solid white;
+  
+}
+.linha{
+  height:20px
+}
+.pixel {
+  opacity:0.36;
+}
+.informacoes{
+  display:inline-block;
+  position: relative;
+  left: 10px;
+  top:-10px;
+  width: 200px;
+}
+.pontuacao{
+  left: 10px;
+}
+.next{
+  margin-top:20px;
+  margin-bottom:20px
+}
+.pontuacao .highscore,
+.pontuacao .score,
+.nivel .level,
+.nivel .speed {
+  margin: 10px;
+  font-size:25px
+}
+.pontuacao .highscore::before,
+.pontuacao .score::before,
+.nivel .level::before,
+.nivel .speed::before
+{
+  display:block;
+  text-tranform: uppercase;
+  font-weight: bolder;
+  font-size: 30px;
+}
+.pontuacao .highscore::before {
+  content:"High Score:";
+  
+}
+.pontuacao .score::before {
+  content:"Score:";
+}
+.next::before {
+  content:"Next";
+  position:absolute;
+  margin-top:-20px;
+  text-tranform: uppercase;
+  font-weight: bolder;
+}
+.nivel .level::before {
+  content:"Level";
+}
+.nivel .speed::before{
+  content:"Speed";
+}

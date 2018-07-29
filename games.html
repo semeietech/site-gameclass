@@ -42,7 +42,7 @@
     <iframe class="game" src="${game}"></iframe>
     <a class="fullscreen" href="${game}">Jogue em tela cheia</a>
 </div>`
- const brickship = Promise.all([
+const brickship = Promise.all([
      {
          title: 'Brickship',
          subtitle: 'um jogo de Renato Yoshio'
@@ -51,8 +51,18 @@
      'games/brickship/index.html'
     ]
 )
+const donotloose = Promise.all([
+     {
+         title: 'Do not Loose',
+         subtitle: 'um jogo de nave comum que cada vez que você morre fica mais dificil, não perca.'
+     },
+     getContent('games/donotloose/bio.html'),
+     'games/donotloose/index.html'
+    ]
+)
  Promise.all([
-     brickship
+     brickship,
+     donotloose
     ]).then((list) => {
             (function(...args){
             return semeieSlide(
