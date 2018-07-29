@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Games, do Curso de Criação de Games - Semeie.tech</title>
+    <script src="lib/brickengine.js"></script>
+    <script src="lib/semeieslide.js"></script>
+    <script src="lib/handlecontent.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src = "assets/semeietech.logo.png" class="center"></img>
+        </div>
+        <div class="menu">
+                <input type="checkbox" id="nav__checkbox" class="nav__checkbox" />
+                <label for="nav__checkbox" class="nav__label icon-reorder"></label>			
+                <nav class="nav" role="navigation">
+                    <ul class="nav__list">
+                    <li class="menu-item"><a href="index.html">Home</a></li>
+                    <li class="menu-item"><a href="http://semeie.tech/">A Semeie</a></li>
+                    <li class="menu-item"><a href="http://semeie.tech/#missao">Missão</a></li>
+                    <li class="menu-item"><a href="http://semeie.tech/#ajude">Ajude</a></li>
+                    </ul>
+                </nav>
+        </div>
+    </header>
+    <main id="gallery">
+    </main>
+</body>
+<script>
+
+ const template = (summary, bio, game) => `<div class="slide-container">
+    <h1>${summary.title}</h1>
+    <p class="subtitle">${summary.subtitle}</p>
+    <div class="bio">
+        ${bio}
+    </div>
+    <iframe class="game" src="${game}"></iframe>
+    <a class="fullscreen" href="${game}">Jogue em tela cheia</a>
+</div>`
+ const brickship = Promise.all([
+     {
+         title: 'Brickship',
+         subtitle: 'um jogo de Renato Yoshio'
+     },
+     getContent('games/brickship/bio.html'),
+     'games/brickship/index.html'
+    ]
+)
+ Promise.all([
+     brickship
+    ]).then((list) => {
+            (function(...args){
+            return semeieSlide(
+                { NEXT: 'next', PREV: 'prev', CANVAS: 'canvas' }, // importar as paginas
+                ...args,
+            )
+            })(
+                'gallery',
+                {
+                    slides: list.map(([summary, bio, game]) => {
+                        return (
+                        {
+                            type: 'html',
+                            data: template(summary, bio.responseText, game),
+                        }
+                    )}
+                    )
+                }
+            )
+    }).catch(console.error)
+  
+</script>
+</html>
